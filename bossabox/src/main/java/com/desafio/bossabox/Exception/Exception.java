@@ -8,18 +8,21 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.List;
+
 @RestControllerAdvice
 public class Exception {
     @ExceptionHandler(ToolException.class)
     public ResponseEntity toolException(ToolException ex){
-        var errorResponse = new ExResponseDTO(ex.getMessage(), HttpStatus.BAD_REQUEST);
-            return ResponseEntity.badRequest().body(errorResponse);
+        var errorResponse = new ExResponseDTO(ex.getMessage(), HttpStatus.OK);
+            return ResponseEntity.ok().body(errorResponse);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity error400(MethodArgumentNotValidException ex) {
-        var errorResponse = new ExResponseDTO(ex.getMessage(), HttpStatus.BAD_REQUEST);
-            return ResponseEntity.badRequest().body(errorResponse);
+        List<ValidationErrorDto> fieldErrors = ex.getFieldErrors()
+                .stream().map(ValidationErrorDto::new).toList();
+            return ResponseEntity.badRequest().body(fieldErrors);
     }
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity error400(){

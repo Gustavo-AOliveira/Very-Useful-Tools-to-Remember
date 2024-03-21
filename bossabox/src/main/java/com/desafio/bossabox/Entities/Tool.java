@@ -1,6 +1,5 @@
 package com.desafio.bossabox.Entities;
 
-import com.desafio.bossabox.Dto.ToolRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

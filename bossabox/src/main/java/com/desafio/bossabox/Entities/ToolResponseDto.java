@@ -1,4 +1,4 @@
-package com.desafio.bossabox.Dto;
+package com.desafio.bossabox.Entities;
 
 import com.desafio.bossabox.Entities.Tool;
 
@@ -14,4 +14,6 @@ public record ToolResponseDto(
     public ToolResponseDto(Tool tool) {
         this(tool.getId(), tool.getTitle(), tool.getLink(), tool.getDescription(), tool.getTags());
     }
+
+
 }

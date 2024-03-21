@@ -3,5 +3,5 @@ CREATE TABLE tools (
     title VARCHAR(225) NOT NULL,
     link VARCHAR(225) NOT NULL,
     description TEXT,
-    tags TEXT
+    tags VARBINARY(255)
 );

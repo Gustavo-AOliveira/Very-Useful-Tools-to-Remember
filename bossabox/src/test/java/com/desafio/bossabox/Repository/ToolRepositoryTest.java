@@ -56,7 +56,7 @@ class ToolRepositoryTest {
     }
 
     @Test
-    @DisplayName("Should return the list is empty")
+    @DisplayName("Should return a empty list")
     void findTagByPathCase3() {
 
         String tagParam = "Proxy";
